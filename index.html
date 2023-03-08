@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Application</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js">    </script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="title-container">
+            <h2>Student Application</h2>
+        </div>
+        <div class="input-area">
+            <form class="input-area-form" onsubmit="onFormSubmit()">
+                <div class="name-box">
+                    <h3>Name</h3>
+                    <input type="text" id="name" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
+                        oninvalid="setCustomValidity('It is required should must only be characters')"
+                        oninput="setCustomValidity('')" />
+                </div>
+
+                <div class="city-box">
+                    <h3>City</h3>
+                    <input type="text" id="city" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
+                        oninvalid="setCustomValidity('It is required and must only be characters')"
+                        oninput="setCustomValidity('')" />
+                </div>
+
+                <div class="fees-box">
+                    <h3>Fees</h3>
+                    <input type="number" id="fees" required pattern="[1-9]+[0-9]*" />
+                </div>
+                <div class="btn-box">
+                    <input type="submit" value="Add / Save">
+                </div>
+            </form>
+        </div>
+        <div class="table-and-title-container">
+            <h3>Student List</h3>
+            <table id="student-list">
+                <thead>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Fees</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <h2 class="statics">Statistics</h2>
+            <div class="row-gap-div">Total Fees: &nbsp; <label id="total-fees"></label></div>
+            <div class="row-gap-div">Total Number of students: &nbsp; <label id="total-students"></label></div>
+            <div class="row-gap-div">Total Number of students whose name starts from 'R': &nbsp; <label
+                    id="total-students-r"></label></div>
+            <div class="row-gap-div">City of 4th student: &nbsp; <label id="fourth-student"></label></div>
+            <div class="row-gap-div">Total fees of 3rd and 5th student: &nbsp; <label id="third-fifth-student"></label>
+            </div>
+            <div class="row-gap-div">Number of students whoose fees is in between $2000 and $3900: &nbsp; <label
+                    id="two-and-three-thousand"></label> </div>
+            <div class="row-gap-div">Number of students whoose fees is < $1000: &nbsp; <label id="less-than-thousand">
+                    </label></div>
+            <div class="row-gap-div">Number of students whoose name starts from 'S' and city name starts from "Ch"
+                &nbsp; <label id="S-and-Ch"></label></div>
+            <div class="row-gap-div">Number of students whoose name starts from 'J' OR city name starts from "H" &nbsp;
+                <label id="J-and-H"></label>
+            </div>
+            <div class="row-gap-div">Min and Max fees: &nbsp; <label id="min-max"></label></div>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
