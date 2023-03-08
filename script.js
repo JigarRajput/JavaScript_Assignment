@@ -6,26 +6,20 @@ let rowToEdit = null //  to track what row we are editing "if any row is getting
 // handles onsubmit of form
 function onFormSubmit() {
     event.preventDefault()  // prevents refreshing
-
     let data = getFormData(isNewData) // get data entered
 
     // if it is not an edit add data in students array
     if (isNewData) {
         insertNewData(data);
         studentsArray.push(data)
-        console.log(studentsArray)
         _id = generateId() // generates new id for each student which helps to distinguish between students
     }
 
     else {
-
         // obtain row to edit
         let rowNum = rowToEdit.cells[0].innerHTML
-
         let index = studentsArray.findIndex((student) => student["rowNumber"] == rowNum)
-        console.log(index)
         studentsArray[index] = data;
-
         rowToEdit.cells[1].innerHTML = data.name
         rowToEdit.cells[2].innerHTML = data.city
         rowToEdit.cells[3].innerHTML = data.fees
@@ -36,7 +30,6 @@ function onFormSubmit() {
 
     updateStats() // call updateStats to update statistics
     let table = document.getElementById('student-list').getElementsByTagName('tbody')[0];
-    // console.log(table.length)
 }
 
 // get data filled in the form
@@ -50,11 +43,9 @@ function getFormData(isNewData) {
     else {
         studentData["rowNumber"] = parseInt(rowToEdit.cells[0].innerHTML, 10)
     }
-    // studentData["rowNumber"] = parseInt(rowToEdit.cells[0].innerHTML, 10)
     studentData["name"] = document.getElementById("name").value;
     studentData["city"] = document.getElementById("city").value;
     studentData["fees"] = document.getElementById("fees").value;
-    // console.log(studentData)
     return studentData;
 }
 
@@ -101,7 +92,6 @@ function onDelete(td) {
 }
 // delete from array
 const deleteFromArray = (rowNum) => {
-    console.log("row number", rowNum)
     let newStudentsArray = studentsArray.filter((student) => student["rowNumber"] != rowNum)
     newStudentsArray.forEach((student) => {
         if (student["rowNumber"] > rowNum) {
@@ -109,13 +99,11 @@ const deleteFromArray = (rowNum) => {
         }
     })
     studentsArray = newStudentsArray
-    console.log(studentsArray)
 }
 
 // total fees function
 const totalFees = () => {
     const totalFeesCalculated = studentsArray.reduce((accumulator, currentElement) => accumulator + parseInt(currentElement.fees), 0)
-    // console.log(totalFeesCalculated)
     return totalFeesCalculated;
 }
 
@@ -131,7 +119,6 @@ const nameStartsWithR = () => {
 // city name of fourth student
 const cityNameOf4 = () => {
     let fourth_student = studentsArray.filter((student) => student["rowNumber"] === 4)
-    console.log("student with 4", fourth_student)
     if (fourth_student.length === 0)
         return ""
     else
@@ -142,7 +129,6 @@ const cityNameOf4 = () => {
 const totalFeesOfThirdAndFifth = () => {
     const newArr = studentsArray.filter((student) => student._id == 3 || student._id == 5)
     let totalNow = 0
-    // console.log(newArr, "3rd and 5th array")
     totalNow = newArr.reduce((accumulator, currentElement) => accumulator + parseInt(currentElement.fees), 0)
     return totalNow
 }
@@ -150,14 +136,12 @@ const totalFeesOfThirdAndFifth = () => {
 // calculates number of students for fees between 2000 and 3900
 const between2and3Thousand = () => {
     const ourStudents = studentsArray.filter((student) => parseInt(student.fees) >= 2000 && parseInt(student.fees) <= 3900)
-    // console.log(ourStudents, "between two and three thousand")
     return ourStudents.length;
 }
 
 // calculates number of students for fees less than 1000
 const lessthan_Thousand = () => {
     const ourStudents = studentsArray.filter((student) => parseInt(student.fees) < 1000)
-    // console.log(ourStudents)
     return ourStudents.length;
 }
 
@@ -175,7 +159,6 @@ const nameJCityH = () => {
 
 // calculates minimum and maximum 
 const minAndMax = () => {
-
     if (studentsArray.length === 0) {
         return {
             min: 0,
@@ -194,7 +177,7 @@ const minAndMax = () => {
             max = parseInt(student.fees)
         }
     })
-    // console.log(min, max, "min and max in that order")
+    // 
 
     return {
         min,
@@ -209,14 +192,12 @@ function generateId() {
         if (studentsArray[i]._id > max)
             max = studentsArray[i]._id
     }
-
     return max + 1;
 }
 
 function updateRowNumbers() {
     for (let i = 0; i < studentsArray.length; i++) {
         let cell0 = document.getElementById('student-list').getElementsByTagName('tbody')[0].getElementsByTagName('tr')[i].cells[0];
-        console.log(cell0.innerHTML, " Inside update row numbers")
         cell0.innerHTML = studentsArray[i].rowNumber
     }
 
@@ -266,6 +247,5 @@ function updateStats() {
     // set city name of fourth student
     let cityName = document.getElementById('fourth-student')
     cityName.innerHTML = cityNameOf4()
-
 }
 
