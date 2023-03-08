@@ -20,21 +20,21 @@
             <form class="input-area-form" onsubmit="onFormSubmit()">
                 <div class="name-box">
                     <h3>Name</h3>
-                    <input type="text" id="name" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
+                    <input type="text" placeholder="John A" id="name" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
                         oninvalid="setCustomValidity('It is required should must only be characters')"
                         oninput="setCustomValidity('')" />
                 </div>
 
                 <div class="city-box">
                     <h3>City</h3>
-                    <input type="text" id="city" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
+                    <input type="text" id="city" placeholder="Ahmedabad" required pattern="^[a-zA-Z]+( [a-zA-Z]+)*$"
                         oninvalid="setCustomValidity('It is required and must only be characters')"
                         oninput="setCustomValidity('')" />
                 </div>
 
                 <div class="fees-box">
                     <h3>Fees</h3>
-                    <input type="number" id="fees" required pattern="[1-9]+[0-9]*" />
+                    <input type="number" id="fees" placeholder="$2500" required pattern="[1-9]+[0-9]*" />
                 </div>
                 <div class="btn-box">
                     <input type="submit" value="Add / Save">

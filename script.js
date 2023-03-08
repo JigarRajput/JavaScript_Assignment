@@ -22,7 +22,7 @@ function onFormSubmit() {
         studentsArray[index] = data;
         rowToEdit.cells[1].innerHTML = data.name
         rowToEdit.cells[2].innerHTML = data.city
-        rowToEdit.cells[3].innerHTML = data.fees
+        rowToEdit.cells[3].innerHTML = "$" + (data.fees)
         rowToEdit = null;
         isNewData = true;
     }
@@ -64,7 +64,7 @@ function insertNewData(data) {
     cell3.innerHTML = data.city
 
     let cell4 = newRow.insertCell(3)
-    cell4.innerHTML = data.fees
+    cell4.innerHTML = "$" + (data.fees)
 
     let cell5 = newRow.insertCell(4)
     cell5.innerHTML = '<a href = "#" onclick="editData(this)">Edit</a> <a href = "#" onclick="onDelete(this)">Delete</a>'
@@ -75,7 +75,8 @@ function editData(td) {
     let rowSelected = td.parentElement.parentElement;
     document.getElementById('name').value = rowSelected.cells[1].innerHTML;
     document.getElementById('city').value = rowSelected.cells[2].innerHTML;
-    document.getElementById('fees').value = rowSelected.cells[3].innerHTML;
+    let fees$ = rowSelected.cells[3].innerHTML;
+    document.getElementById('fees').value = parseInt(fees$.substring(1,));
     rowToEdit = rowSelected;
     isNewData = false
 }
